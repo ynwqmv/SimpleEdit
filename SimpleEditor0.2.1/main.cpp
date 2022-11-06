@@ -27,6 +27,7 @@
 #include <wx/bmpbuttn.h>
 #include <wx/settings.h>
 #include <GL/glut.h>
+
  
 
 class App : public wxApp {
@@ -60,7 +61,7 @@ public:
     /** Counts entering strings */
     void OnStr(wxCommandEvent &event);
 
- 
+ 	/** Toolbar Info*/
     void OnHelp(wxCommandEvent& event);
  
 
@@ -89,6 +90,7 @@ TextFrame::TextFrame()
 : wxFrame(nullptr,wxID_ANY, "SimpleEdit")
 {
     
+    // TextCtrls
     m_pTextCtrl = new wxTextCtrl(this, ID_TEXT, _T("\t\t\t\t\t\t  WELCOME\n\n[SimpleEdit v0.2.1]\t\t\t\t\t\t\t\t\t\t\n\n       Simple Text Editor for UNIX, OSX and Windows platforms!\n\nFor more information, check [GitHub] repository!\nProgram works without any LICENSE. 'SimpleEdit' - fully free & open-source app for any platforms! Write Documents here are very simple! Enjoy! For AppGuide, check 'Info'\n\nGitHub: https://github.com/ywnqmv"),
         wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE);
 
@@ -109,26 +111,34 @@ TextFrame::TextFrame()
 
     wxToolBar* toolbar = CreateToolBar();
  
+    // Toolbar | New File
     toolbar->AddTool(ID_NEW, _("New"), wxArtProvider::GetBitmap("wxART_NEW"));
-    toolbar->Realize();
+    toolbar->SetToolShortHelp(ID_NEW, _("Open File"));
+	
 	toolbar->AddSeparator();	
 	toolbar->AddSeparator();
-
+ 
+	// Toolbar | File Save
    	toolbar->AddTool(ID_SAVEE, _("Save"), wxArtProvider::GetBitmap("wxART_FILE_SAVE"));
-    toolbar->Realize();
+   	toolbar->SetToolShortHelp(ID_SAVEE, _("Save File"));
 
+   
+
+    // Toolbar | File Print
     toolbar->AddTool(wxID_ANY, _("Print"), wxArtProvider::GetBitmap("wxART_PRINT"));
-    toolbar->Realize();
+    toolbar->SetToolShortHelp(wxID_ANY, _("Print"));
+    
 
-
+    // Toolbar | App Info
     toolbar->AddTool(ID_HELPP, _("Help"), wxArtProvider::GetBitmap("wxART_INFORMATION"));
+   	toolbar->SetToolShortHelp(ID_HELPP, _("Help"));
     toolbar->Realize();
      
     
      
     // About menu
     m_pHelpMenu = new wxMenu();
-    m_pHelpMenu->Append(wxID_ABOUT, _T("&About"), _T("Shows information about the application"));
+    
     m_pMenuBar->Append(m_pHelpMenu, _T("&Info"));
     m_pHelpMenu->Append(wxID_ABOUT, _T("&About"), _T("Shows information about the application"));
     
@@ -200,6 +210,7 @@ void TextFrame::OnMenuFileSave(wxCommandEvent &event)
 
     }
     SaveDialog->Close();
+
 }
 
 void TextFrame::OnMenuFileQuit(wxCommandEvent &event)
@@ -209,22 +220,26 @@ void TextFrame::OnMenuFileQuit(wxCommandEvent &event)
 
 void TextFrame::OnMenuHelpAbout(wxCommandEvent &event)
 {
-    wxLogMessage(_T("SimpleEdit\n\nv0.2.0b\n\nCreators: @ywnqmv"));
+    wxLogMessage(_T("SimpleEdit\n\nv0.2.1b\n\nCreators: @ywnqmv"));
+
 }
 
 /* **OnClose Dialog */
 void TextFrame::OnClose(wxCloseEvent& event)
 {
-    wxLogMessage("Closed successfully");
+    wxLogMessage("Thank You for using SimpleEdit!");
     event.Skip();
+
 }
 
 
 void TextFrame::OnStr(wxCommandEvent &event)
 {   
+	// local var i identify as zero(0), because it's static. so we don't need initilization of it.
+	// also it's good for remembering. when function works many times, static var remembering latest numbers. 
     static int i;
     
-    i++;
+    i++; // when we making increment of static i, it's rise on one, and remembering the number befor it. so just adding +1
 
     wxString str = wxString::Format("S: %d",i);
     wxLogStatus(str);
