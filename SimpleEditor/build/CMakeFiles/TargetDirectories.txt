@@ -1,0 +1,3 @@
+/home/lex/Desktop/srcc/build/CMakeFiles/main.dir
+/home/lex/Desktop/srcc/build/CMakeFiles/edit_cache.dir
+/home/lex/Desktop/srcc/build/CMakeFiles/rebuild_cache.dir
