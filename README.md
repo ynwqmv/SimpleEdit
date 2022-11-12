@@ -3,3 +3,11 @@ SimpleEdit is a new, lightweight and convenient text editor developed by a priva
 
 ![](https://github.com/ynwqmv/SimpleEdit/blob/main/Screenshot%20at%202022-11-06%2020-33-52.png)
 ![](https://github.com/ynwqmv/SimpleEdit/blob/main/Screenshot%20at%202022-11-06%2020-35-03.png)
+
+
+
+/ ___|(_)_ __ ___  _ __ | | ___| ____|__| (_) |_  __   __/ _ \ |___ \  / |
+\___ \| | '_ ` _ \| '_ \| |/ _ \  _| / _` | | __| \ \ / / | | |  __) | | |
+ ___) | | | | | | | |_) | |  __/ |__| (_| | | |_   \ V /| |_| | / __/ _| |
+|____/|_|_| |_| |_| .__/|_|\___|_____\__,_|_|\__|   \_/  \___(_)_____(_)_|
+                  |_|        
